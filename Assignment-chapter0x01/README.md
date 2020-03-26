@@ -248,7 +248,7 @@
   
   ![](./image/exp.gif)
   
-+ 安装过程原视频，[点击此处](https://member.bilibili.com/v2#/upload-manager/article)[审核中]
++ 安装过程原视频(b站)，[点击此处](https://www.bilibili.com/video/BV1E741127YM)
 
 ## 实验所遇问题
 

@@ -1,0 +1,86 @@
+sudo: required
+
+language: sh
+
+before_install:
+    - sudo apt-get update -q
+    - export scversion="stable" # or "v0.4.7", or "latest"
+    - wget "https://storage.googleapis.com/shellcheck/shellcheck-${scversion}.linux.x86_64.tar.xz"
+    - tar --xz -xvf shellcheck-"${scversion}".linux.x86_64.tar.xz
+    - sudo cp shellcheck-"${scversion}"/shellcheck /usr/bin/
+    - /usr/bin/shellcheck --version
+
+    - sudo apt-get install imagemagick
+    - sudo apt-get install gsfonts
+    - sudo apt-get install p7zip-full
+    - 7z x web_log.tsv.7z
+
+script:
+  - bash test.sh
+  - cd Assignment-chapter0x04/sh
+
+  # 任务一
+  - bash task1-1.sh --help
+  # 对文件目录下所有文件进行批处理操作，对不符合大小和分辨率要求的图片进行图片质量压缩
+  - identify img/test.jpg
+  - ./task1-1.sh -f img/ -c 1M 1280 1280 85
+  - identify img/test.jpg
+  # 对图片进行压缩分辨率操作
+  - identify img/test.jpg
+  - ./task1-1.sh -f img/test.jpg -cr 1380x640
+  - identify img/test.jpg
+  # 支持对图片添加水印
+  - ./task1-1.sh -f img/ -w cwx
+  # 支持批量重命名
+  - ls img/
+  - ./task1-1.sh -f img/ -b -p my jpg
+  - ls img/
+  - ./task1-1.sh -f img/ -b -s my jpg
+  - ls Timg/
+  # 转换图片
+  - ls img/
+  -  ./task1-1.sh -f img/ -tr
+  - ls img/
+  # 组合使用举例
+  # 改变分辨率，并添加后缀
+  - identify img/test.jpg
+  - ./task1-1.sh -f img/test.jpg -cr 690x320 -b -s end jpg
+  - identify img/testend.jpg
+
+  # 任务二
+  - ./task2-2.sh worldcupplayerinfo.tsv --help
+  # 统计年龄、年龄最大、年龄最小球员
+  - ./task2-2.sh worldcupplayerinfo.tsv -age
+  # 统计位置信息
+  - ./task2-2.sh worldcupplayerinfo.tsv -position
+  # 统计名字最长、最短球员
+  - ./task2-2.sh worldcupplayerinfo.tsv -name
+
+  # 任务三
+  - ./task3-3.sh web_log.tsv --help
+  # 统计访问来源主机TOP 100和分别对应出现的总次数，不包括IP和代理
+  - ./task3-3.sh web_log.tsv -sourcehost
+  # 统计访问来源主机TOP 100 IP和分别对应出现的总次数
+  - ./task3-3.sh web_log.tsv -sourceip
+  # 统计最频繁被访问的URL TOP 100
+  - ./task3-3.sh web_log.tsv -fre
+  # 统计不同响应状态码的出现次数和对应百分比
+  - ./task3-3.sh web_log.tsv -sta
+  # 分别统计不同4XX状态码对应的TOP 10 URL和对应出现的总次数
+  - ./task3-3.sh web_log.tsv -sta4x
+  # 给定URL输出TOP 100访问来源主机
+  - ./task3-3.sh web_log.tsv -urhost /history/apollo/a-001/a-001-patch-small.gif
+
+
+after_script:
+  - /usr/bin/shellcheck test.sh
+
+after_failure:
+  - id
+  - pwd
+  - df -h
+  - cat error.log
+
+notifications:
+  email:
+    on_success: never

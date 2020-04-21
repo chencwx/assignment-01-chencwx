@@ -16,11 +16,11 @@ before_install:
     - 7z x web_log.tsv.7z
 
 script:
-  - bash test.sh
+  - ./test.sh
   - cd Assignment-chapter0x04/sh
 
   # 任务一
-  - bash task1-1.sh --help
+  - ./task1-1.sh --help
   # 对文件目录下所有文件进行批处理操作，对不符合大小和分辨率要求的图片进行图片质量压缩
   - identify img/test.jpg
   - ./task1-1.sh -f img/ -c 1M 1280 1280 85

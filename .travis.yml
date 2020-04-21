@@ -17,6 +17,7 @@ before_install:
 
 script:
   - ./test.sh
+  - cp web_log.tsv Assignment-chapter0x04/web_log.tsv
   - cd Assignment-chapter0x04/sh
 
   # 任务一

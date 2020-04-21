@@ -445,31 +445,33 @@
 + 统计访问来源主机TOP 100和分别对应出现的总次数
 
   ```bash
-./task3-3.sh web_log.tsv -sourcehost
+  ./task3-3.sh web_log.tsv -sourcehost
   ```
+
+
 
   ![](./image/sh.png)
 
   ```bash
-[----------访问来源主机TOP 100和分别对应出现的总次数----------]
+  [----------访问来源主机TOP 100和分别对应出现的总次数----------]
   Source host: edams.ksc.nasa.gov                          Number: 6530
-Source host: piweba4y.prodigy.com                        Number: 4846
+  Source host: piweba4y.prodigy.com                        Number: 4846
   Source host: piweba5y.prodigy.com                        Number: 4607
   Source host: piweba3y.prodigy.com                        Number: 4416
   Source host: news.ti.com                                 Number: 3298
-Source host: intgate.raleigh.ibm.com                     Number: 3123
+  Source host: intgate.raleigh.ibm.com                     Number: 3123
   Source host: mpngate1.ny.us.ibm.net                      Number: 3011
-Source host: e659229.boeing.com                          Number: 2983
+  Source host: e659229.boeing.com                          Number: 2983
   Source host: piweba1y.prodigy.com                        Number: 2957
   Source host: webgate1.mot.com                            Number: 2906
   Source host: beta.xerox.com                              Number: 2318
-Source host: poppy.hensa.ac.uk                           Number: 2311
+  Source host: poppy.hensa.ac.uk                           Number: 2311
   Source host: vagrant.vf.mmc.com                          Number: 2237
-Source host: palona1.cns.hp.com                          Number: 1910
+  Source host: palona1.cns.hp.com                          Number: 1910
   Source host: koriel.sun.com                              Number: 1762
   Source host: trusty.lmsc.lockheed.com                    Number: 1637
   Source host: gw2.att.com                                 Number: 1623
-Source host: cliffy.lfwc.lockheed.com                    Number: 1563
+  Source host: cliffy.lfwc.lockheed.com                    Number: 1563
   Source host: inet2.tek.com                               Number: 1503
   Source host: disarray.demon.co.uk                        Number: 1485
   Source host: gw1.att.com                                 Number: 1467

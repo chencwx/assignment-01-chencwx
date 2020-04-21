@@ -13,7 +13,6 @@ before_install:
     - sudo apt-get install imagemagick
     - sudo apt-get install gsfonts
     - sudo apt-get install p7zip-full
-    - cd Assignment-chapter0x04/sh
     - 7z x web_log.tsv.7z
 
 script:
